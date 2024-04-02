@@ -1,0 +1,29 @@
+/* GLOBAL + VARIABLES */
+
+:root {
+    --main-font: "Roboto Mono", monospace;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #090A0C;
+}
+
+.navbar h1 {
+    padding: 5px;
+    color: rgb(218, 233, 119);
+    font-family: var(--main-font);
+   
+}
+
+
+.search-heading {
+    font-family: var(--main-font);
+    font-weight: 700;
+    color:rgb(50, 112, 255) !important;
+}
+
+
+
+
