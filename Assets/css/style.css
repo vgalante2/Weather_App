@@ -10,9 +10,17 @@ html, body {
     background-color: #090A0C;
 }
 
+
+
+
+.side-button-section {
+    display: flex;
+    flex-direction: column;
+}
+
 .navbar h1 {
     padding: 5px;
-    color: rgb(218, 233, 119);
+    color: rgb(185, 157, 54);
     font-family: var(--main-font);
    
 }
@@ -21,8 +29,21 @@ html, body {
 .search-heading {
     font-family: var(--main-font);
     font-weight: 700;
-    color:rgb(50, 112, 255) !important;
+    color:rgb(255, 255, 255) !important;
 }
+
+.weather-input {
+    width: 25% !important;
+}
+
+.div {
+    font-family: var(--main-font);
+}
+
+.main-box-one {
+    height:60%;
+}
+
 
 
 
