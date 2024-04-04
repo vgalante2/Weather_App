@@ -8,6 +8,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+    integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <title>Weather App</title>
 </head>
 <body>
@@ -39,26 +45,26 @@
     </aside>
     <div class=" is-flex is-flex-direction-column is-justify-content-center p-3">
      <section class="card is-flex-grow-2 has-background-light p-3 ">
-        <h1 class="has-text-black-bis">Naples, FL</h1>
-        <p class="has-text-black-bis">Temperature</p>
-        <p class="has-text-black-bis">Winds</p>
-        <p class="has-text-black-bis">Humidity</p>
+        <h1 id="state" class="has-text-black-bis">Naples, FL</h1>
+        <p  id="current-temp" class="has-text-black-bis">Temperature</p>
+        <p  id="wind-speed" class="has-text-black-bis">Winds</p>
+        <p  id="humidity"  class="has-text-black-bis">Humidity</p>
      </section>
      <section class="h-100 is-flex-grow-3">
       <div class=" is-flex  ">
-      <div class=" card is-3 has-background-grey-dark p-5  m-2 has-text-black ">
+      <div class=" card is-3 has-background-grey-dark p-4  m-2 has-text-black ">
         Baltimore
     </div>
-      <div class=" card is-3 has-background-grey-dark p-5 m-2 has-text-black ">
+      <div class=" card is-3 has-background-grey-dark p-4 m-2 has-text-black ">
         Houston
     </div>
-      <div class=" card is-3 has-background-grey-dark p-5 m-2 has-text-black "
+      <div class=" card is-3 has-background-grey-dark p-4 m-2 has-text-black "
       >Denver
     </div>
-      <div class=" card is-3 has-background-grey-dark p-5 m-2 has-text-black ">
+      <div class=" card is-3 has-background-grey-dark p-4 m-2 has-text-black ">
         Fort Lauderdale
     </div>
-      <div class="  card is-3 has-background-grey-dark text-center p-5 m-2 has-text-black ">
+      <div class="  card is-3 has-background-grey-dark text-center p-4 m-2 has-text-black ">
         New Jersey
     </div>
       </div>
@@ -73,4 +79,5 @@
     <p> developer by vin galante </p>
     </div>
 </footer>
+<script src="Assets/js/script.js"></script>
 </html>
