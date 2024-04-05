@@ -29,8 +29,8 @@
     <aside class="'aside  is-col-span-2">
 <div class="is-flex-direction-column p-3">
     <h1 class="search-heading has-text-info is-size-4 p-2">Search for a City:</h1>
-    <input class="weather-input input is-info is-focued ml-3 is-flex" type="text" id="userInput" name="userInput" placeholder="Enter a city:">
-    <button class="button is-small has-background-dark-grey ml-3 mt-3" type="submit">Search</button>
+    <input id="weatherInput" class="weather-input input is-info is-focued ml-3 is-flex" type="text"  name="userInput" placeholder="Enter a city:">
+    <button id="weatherSubmit" class="button is-small has-background-dark-grey ml-3 mt-3" type="submit">Search</button>
 </div>
 <div class="columns is-flex-direction-column m-5">
     <div class="card column is-four-fifths has-background-white m-2 has-text-black">New York</div>
@@ -43,8 +43,8 @@
     <div class="card column is-four-fifths has-background-white  m-2 has-text-black">New Jersey</div>
 </div>
     </aside>
-    <div class=" is-flex is-flex-direction-column is-justify-content-center p-3">
-     <section class="card is-flex-grow-2 has-background-light p-3 ">
+    <div  class=" is-flex is-flex-direction-column is-justify-content-center p-3">
+     <section id='currentWeather' class="card is-flex-grow-2 has-background-light p-3 ">
         <h1 id="state" class="has-text-black-bis">Naples, FL</h1>
         <p  id="current-temp" class="has-text-black-bis">Temperature</p>
         <p  id="wind-speed" class="has-text-black-bis">Winds</p>
@@ -79,5 +79,5 @@
     <p> developer by vin galante </p>
     </div>
 </footer>
-<script src="Assets/js/script.js"></script>
+<script src="/Assets/js/script.js"></script>
 </html>
