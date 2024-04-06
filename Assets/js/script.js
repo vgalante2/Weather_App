@@ -26,7 +26,7 @@ return $.get(url).then(function(weatherObj) {
 
 
 function getForecastWeather(cityName) {
-    const url = `${baseURL}/forecast/?q=${cityName}&appid=${apiKey}&units=imperial`
+    const url = `${baseURL}/forecast?q=${cityName}&appid=${apiKey}&units=imperial`
 
 
     return $.get(url).then(function (forecast) {
@@ -88,15 +88,18 @@ function outputForecast(forecastData) {
 
     firstFiveElements.forEach(forecast => {
         // Assuming dayjs is already included in your project
-        const formattedDate = dayjs(forecast.dt_txt).format('MMM D, YYYY hh:mm A');
+        const formattedDate = dayjs(forecast.dt_txt).format('MMM D, YYYY');
+        const time = dayjs(forecast.dt_txt).format('hh:mm A');
 
         // Append a div with the forecast details for each of the first 5 entries
         forecastContainer.append(`
-            <div id={card}>
-                <h1>Time: ${formattedDate}</h1>
-                <p id="forecast-icon"><img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" alt="Weather icon"></p>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center;  flex-direction: column; padding: 5px; margin-right: 15px; border: 3px solid #519af9; border-radius: 15px;">
+               <h1>Day: ${formattedDate}</h1>
+               <p id="forecast-icon"><img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" alt="Weather icon"></p>
+
+                <p>Time: ${time}</p>
                 <p id="forecast-temp">Temp: ${forecast.main.temp.toFixed(0)}°</p>
-                <p>Wind Speed: ${forecast.wind.speed} mph</p>
+                <p>Wind: ${forecast.wind.speed} mph</p>
                 <p id="forecast-humidity">Humidity: ${forecast.main.humidity}%</p>
             </div> 
         `);
