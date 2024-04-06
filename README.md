@@ -10,7 +10,7 @@ Weather Dash is a dynamic weather application that provides real-time weather in
 
 ## Deployment
 
-Provided as a link here - [Module 01](Your_REPO_LINK)
+LIVE DEMO: ([Visit Live >](https://vgalante2.github.io/Weather_App/))
 
 ## Usage
 
