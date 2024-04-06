@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
 /* GLOBAL + VARIABLES */
 
 :root {
-    --main-font: "Roboto Mono", monospace;
+    --main-font: "Lilita One", sans-serif;
+
 }
 
 html, body {
@@ -45,6 +48,21 @@ html, body {
 }
 
 
+#city-name {
+    font-family: var(--main-font);
+    
+}
 
+#current-temp {
+    font-family: var(--main-font);
+}
+
+#wind-speed {
+    font-family: var(--main-font);
+}
+
+#humidity {
+    font-family: var(--main-font);
+}
 
 

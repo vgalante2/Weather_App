@@ -45,27 +45,19 @@
     </aside>
     <div  class=" is-flex is-flex-direction-column is-justify-content-center p-3">
      <section id='currentWeather' class="card is-flex-grow-2 has-background-light p-3 ">
-        <h1 id="state" class="has-text-black-bis">Naples, FL</h1>
-        <p  id="current-temp" class="has-text-black-bis">Temperature</p>
-        <p  id="wind-speed" class="has-text-black-bis">Winds</p>
-        <p  id="humidity"  class="has-text-black-bis">Humidity</p>
+        <h1 id="city-name" class=" is-size-2 has-text-info">City</h1>
+        <p  id="current-temp" class="is-size-4 has-text-black-bis">Temperature</p>
+        <p  id="wind-speed" class="is-size-4 has-text-black-bis">Winds</p>
+        <p  id="humidity"  class="is-size-4 has-text-black-bis">Humidity</p>
      </section>
      <section class="h-100 is-flex-grow-3">
-      <div class=" is-flex  ">
-      <div class=" card is-3 has-background-grey-dark p-4  m-2 has-text-black ">
-        Baltimore
-    </div>
-      <div class=" card is-3 has-background-grey-dark p-4 m-2 has-text-black ">
-        Houston
-    </div>
-      <div class=" card is-3 has-background-grey-dark p-4 m-2 has-text-black "
-      >Denver
-    </div>
-      <div class=" card is-3 has-background-grey-dark p-4 m-2 has-text-black ">
-        Fort Lauderdale
-    </div>
-      <div class="  card is-3 has-background-grey-dark text-center p-4 m-2 has-text-black ">
-        New Jersey
+      <div id="forecast-section" class=" is-flex is-flex-wrap-wrap ">
+      <div id="forecast-container" class=" is-flex-grow-2 card is-3 has-background-grey-dark p-4  m-2 has-text-black ">
+        <h1 class=" has-text-info" id="forecast-date"></h1>
+        <p id="forecast-icon"></p>
+        <p id="forecast-temp"></p>
+        <p id="forecast-wind"></p>
+        <p id="forecast-humidity"></p>
     </div>
       </div>
     </section>

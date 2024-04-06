@@ -4,28 +4,15 @@ const apiKey = 'e9621bce5c4f4f8785b30e2365e66bfb'
 
 const weatherSubmit = document.querySelector('#weatherSubmit')
 
-function outputCurrentWeather(currentData) {
 
-    const temp = $('#current-temp')
-    const wind = $('#wind-speed')
-    const humidity = $('#humidity')
-
-
-    temp.text(`Temp: ${currentData.main.temp.toFixed(0)} °`)
-    wind.text(`Wind: ${currentData.wind.speed} mph`)
-
-    return currentData.name
-}
-
-
-
+// GET WEATHER FUNCTION
 
 function getCurrentWeatherByCity (cityName) {
 
 const url = `${baseURL}/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
   
  
-console.log("The city is :" + cityName)
+console.log("The city is : " + cityName)
 
 return $.get(url).then(function(weatherObj) {
       
@@ -38,56 +25,109 @@ return $.get(url).then(function(weatherObj) {
 }
 
 
-
 function getForecastWeather(cityName) {
-    const options = `/forecast?q=${cityName}&appid=${apiKey}&units=imperial`
-    const url = baseURL + options
+    const url = `${baseURL}/forecast/?q=${cityName}&appid=${apiKey}&units=imperial`
 
 
-    return $.get(url)
-    // return fetch(url)
-    //   .then(function (res) {
-    //     // Pass the parsed json data to the next .then in the chain
-    //     return res.json() // Returns a promise object that must be resolved to get to the data
-    //   })
+    return $.get(url).then(function (forecast) {
+
+        localStorage.setItem('forecastWeatherData', JSON.stringify(forecast))
+
+       
+        console.log(forecast);
+
+
+    })
+   
   }
 
-
+//   STORAGE
 
   function storeWeatherData() {
    
      const storedData = localStorage.getItem('currentWeatherData')
+    const  storedForecast = localStorage.getItem('forecastWeatherData')
 
-     if (!storedData) {
+
+
+     if (!storedData && !storedForecast) {
        console.log("no data found")
 
      }
 
-     const storedWeatherData = JSON.parse(storedData)
+     const weatherData = JSON.parse(storedData)
+     const forecastData = JSON.parse(storedForecast)
+     outputWeatherData(weatherData)
+     outputForecast(forecastData)
   }
 
+  
 
 
-function outputWeatherData() {
+
+//   OUTPUT WEATHER DATA
+
+function outputWeatherData(weatherData) {
+
+    $('#city-name').text(`${weatherData.name}`);
+    $('#current-temp').text(`Temp: ${weatherData.main.temp.toFixed(0)} °`);
+    $('#wind-speed').text(`Wind: ${weatherData.wind.speed} mph`);
+    $('#humidity').text(`Humidity: ${weatherData.main.humidity}%`);
+    
+    
+    
 
 }
+
+function outputForecast(forecastData) {
+    const forecastContainer = $('#forecast-container');
+    forecastContainer.empty(); // Clear existing content
+
+    // Slice the first 5 elements from the forecast list
+    let firstFiveElements = forecastData.list.slice(0, 5);
+
+    firstFiveElements.forEach(forecast => {
+        // Assuming dayjs is already included in your project
+        const formattedDate = dayjs(forecast.dt_txt).format('MMM D, YYYY hh:mm A');
+
+        // Append a div with the forecast details for each of the first 5 entries
+        forecastContainer.append(`
+            <div id={card}>
+                <h1>Time: ${formattedDate}</h1>
+                <p id="forecast-icon"><img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" alt="Weather icon"></p>
+                <p id="forecast-temp">Temp: ${forecast.main.temp.toFixed(0)}°</p>
+                <p>Wind Speed: ${forecast.wind.speed} mph</p>
+                <p id="forecast-humidity">Humidity: ${forecast.main.humidity}%</p>
+            </div> 
+        `);
+    });
+}
+
 
 
 
 
 weatherSubmit.addEventListener('click', function(event) {
     event.preventDefault()
-
+    
     
     const cityName = document.querySelector('#weatherInput').value
     
     if (cityName) {
         getCurrentWeatherByCity(cityName).then(() => {
-            storeWeatherData()
+            storeWeatherData(cityName)
         })
+       
+
     }else {
         console.log("please enter a city name")
     }
+
+    if (cityName) {
+        getForecastWeather(cityName).then(() => {
+            storeWeatherData(cityName)
+    })
+}
 
 })
 
