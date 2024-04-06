@@ -2,6 +2,7 @@ const baseURL = 'https://api.openweathermap.org/data/2.5'
 const apiKey = 'e9621bce5c4f4f8785b30e2365e66bfb'
 
 
+
 const weatherSubmit = document.querySelector('#weatherSubmit')
 
 
@@ -21,6 +22,8 @@ return $.get(url).then(function(weatherObj) {
        console.log(weatherObj)
     }
 )
+
+
 
 }
 
@@ -61,6 +64,14 @@ function getForecastWeather(cityName) {
      outputForecast(forecastData)
   }
 
+
+  function saveSearchHistory(cityName) {
+    let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    if (!searchHistory.includes(cityName)) {
+      searchHistory.push(cityName);
+      localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+    }
+  }
   
 
 
@@ -107,32 +118,49 @@ function outputForecast(forecastData) {
 }
 
 
+function displaySearchHistory(cityName) {
+    let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    const historyContainer = $('#search-history-container'); // Ensure this is the correct ID for your container
+    historyContainer.empty(); // Clear previous entries
 
+    searchHistory.forEach(cityName => {
+        const historyItem = $(`
+            <div class="card column is-half has-background-white m-2 has-text-black" style="cursor: pointer;">
+              ${cityName}
+            </div>
+        `);
+        historyContainer.append(historyItem);
 
+        // Attach click event listener to this history item
+        historyItem.click(function() {
+            // Fetch and display weather data for this city
+            getCurrentWeatherByCity(cityName);
+            getForecastWeather(cityName);
+        });
 
-weatherSubmit.addEventListener('click', function(event) {
-    event.preventDefault()
-    
-    
-    const cityName = document.querySelector('#weatherInput').value
-    
-    if (cityName) {
-        getCurrentWeatherByCity(cityName).then(() => {
-            storeWeatherData(cityName)
-        })
-       
-
-    }else {
-        console.log("please enter a city name")
-    }
-
-    if (cityName) {
-        getForecastWeather(cityName).then(() => {
-            storeWeatherData(cityName)
-    })
+    });
 }
 
-})
+
+  weatherSubmit.addEventListener('click', function(event) {
+    event.preventDefault();
+    const cityName = document.querySelector('#weatherInput').value.trim(); // Ensure cityName is trimmed to remove excess whitespace
+    
+    if (cityName) {
+        saveSearchHistory(cityName); // Save search history right after verifying cityName is provided
+        getCurrentWeatherByCity(cityName).then(() => {
+            storeWeatherData(); // Note: Removed cityName as it's not used in storeWeatherData function
+        });
+        getForecastWeather(cityName).then(() => {
+            storeWeatherData(); // Note: Same here, ensure storeWeatherData doesn't expect cityName
+        });
+        displaySearchHistory(); // Refresh the search history display to include the new search
+    } else {
+        console.log("Please enter a city name");
+    }
+});
+
+
 
 
 
