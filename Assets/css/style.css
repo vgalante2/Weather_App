@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+/* GLOBAL + VARIABLES */
+
+:root {
+    --main-font: "Lilita One", sans-serif;
+   
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #090A0C;
+}
+
+
+
+
+.side-button-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar h1 {
+    padding: 5px;
+    color: rgb(185, 157, 54);
+    font-family: var(--main-font);
+   
+}
+
+
+.search-heading {
+    font-family: var(--main-font);
+    font-weight: 700;
+    color:rgb(255, 255, 255) !important;
+}
+
+.weather-input {
+    width: 25% !important;
+}
+
+.div {
+    font-family: var(--main-font);
+}
+
+.main-box-one {
+    height:60%;
+}
+
+
+#city-name {
+    font-family: var(--main-font);
+    
+}
+
+#current-temp {
+    font-family: var(--main-font);
+}
+
+#wind-speed {
+    font-family: var(--main-font);
+}
+
+#humidity {
+    font-family: var(--main-font);
+}

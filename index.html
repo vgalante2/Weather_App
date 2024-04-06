@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Assets/css/style.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+    integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <title>Weather App</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar is-justify-content-center has-background-dark-grey" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand ">
+              <h1 class="title has-text-info ">Weather Dash</h1>
+            </div>
+          </nav>
+    </header>
+
+    <main class="section" style="display: grid; grid-template-columns: 25% 70%;  width: 100%; margin: auto;">
+    <aside class="'column ">
+<div class="is-flex-direction-column p-3">
+    <h1 class="search-heading has-text-info is-size-4 p-2">Search for a City:</h1>
+    <input id="weatherInput" class=" column input is-info is-focued is-7" type="text"  name="userInput" placeholder="Enter a city:">
+    <button id="weatherSubmit" class="button is-small has-background-dark-grey ml-3 mt-3" type="submit">Search</button>
+</div>
+<div id="search-history-container" class="column is-flex-direction-column ">
+ 
+</div>
+    </aside>
+    <div  class=" is-flex-direction-column is-four-fifth is-justify-content-center p-3">
+     <section id='currentWeather' class="card is-flex-grow-2 has-background-light p-3 ">
+        <h1 id="city-name" class=" is-size-2 has-text-info">City</h1>
+        <p  id="current-temp" class="is-size-4 has-text-black-bis">Temperature</p>
+        <p  id="wind-speed" class="is-size-4 has-text-black-bis">Winds</p>
+        <p  id="humidity"  class="is-size-4 has-text-black-bis">Humidity</p>
+     </section>
+     <section class="h-100 is-flex-grow-3">
+      
+      <div id="forecast-container" class="  is-flex is-flex-grow-3 card is-3 p-3  is-justify-content-center has-text-black" style="background-color: #818181;">
+    </div>
+    </section>
+   </div>
+  </main>
+</body>
+<footer class="footer">
+    <div class="has-text-centered h-25 is-flex p-3 is-justify-content-center is-flex-direction-column is-align-content-flex-end">
+    <p> copyright &copy; 2024 </p>
+    <a class="has-text-info"href="https://github.com/vgalante2">Github</a>
+    <p> developer by vin galante </p>
+    </div>
+</footer>
+<script src="/Assets/js/script.js"></script>
+</html>
